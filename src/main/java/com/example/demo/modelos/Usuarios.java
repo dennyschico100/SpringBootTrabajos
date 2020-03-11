@@ -9,6 +9,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.sun.istack.Nullable;
+
 @Entity
 @Table(name="usuarios",uniqueConstraints = {
 		
@@ -31,6 +33,7 @@ public class Usuarios {
 	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;
 	}
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -71,10 +74,9 @@ public class Usuarios {
 	private Date fecha_nacimiento;
 	private String telefono;
 	private int estado;
+	@Nullable
 	private Date created_at;
-	
-	
-	
+		
 	public int getId_usuario() {
 		return id_usuario;
 	}
@@ -152,6 +154,24 @@ public class Usuarios {
 	}
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
+	}
+
+	public Usuarios(@NotBlank @Size(max = 100) String nombres, @NotBlank @Size(max = 100) String apellidos,
+			@Email @NotBlank String email, @NotBlank @Size(min = 6) String contraseña,
+			@NotBlank @Size(min = 6) String contraseña2, @NotBlank String nacionalidad, int genero, int edad,
+			Date fecha_nacimiento, String telefono, int estado) {
+		super();
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.contraseña = contraseña;
+		this.contraseña2 = contraseña2;
+		this.nacionalidad = nacionalidad;
+		this.genero = genero;
+		this.edad = edad;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.telefono = telefono;
+		this.estado = estado;
 	}
 	
 
