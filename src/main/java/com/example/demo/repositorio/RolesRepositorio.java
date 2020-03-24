@@ -11,7 +11,7 @@ import com.example.demo.modelos.Roles;
 @Repository
 public interface RolesRepositorio  extends JpaRepository<Roles, Long > {
 
-	Optional<Roles> findByName(ERoles name);
+	Optional<Roles>  findByNombre(ERoles name);
 	/*
 	 Un repositorio contiene métodos para realizar operaciones CRUD,
 	  ordenar y paginar datos. @Repositoryes una anotación de marcador, 

@@ -1,42 +1,27 @@
-package com.example.demo.modelos;
+package com.example.demo.transacciones.peticion;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.example.demo.modelos.Roles;
 import com.sun.istack.Nullable;
 
-@Entity
-@Table(name="usuarios",uniqueConstraints = {
-		
-		@UniqueConstraint(columnNames = "email")
-} )
-public class Usuarios {
+public class SignupRequest {
 
-
-	@ManyToMany(fetch = FetchType.LAZY)
 	
-	@JoinTable(name = "usuario_roles",
-				joinColumns = @JoinColumn(name = "id_usuario" ),
-				inverseJoinColumns = @JoinColumn(name="id_rol")
-			)
-	private Set<Roles> roles = new HashSet<>();
-	
-	public Set<Roles> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Roles> roles) {
-		this.roles = roles;
-	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	
 	private int  id_usuario;
 	
 	@NotBlank
@@ -65,6 +50,7 @@ public class Usuarios {
 	
 	private String contraseña2;
 	
+
 	@NotBlank
 	private String nacionalidad;
 	private int genero;
@@ -154,33 +140,18 @@ public class Usuarios {
 		this.created_at = created_at;
 	}
 
-	public Usuarios() {
-		
-	}
-	public Usuarios(@NotBlank @Size(max = 100) String nombres, 
-			@NotBlank @Size(max = 100) String apellidos,
-			@Email @NotBlank 		   String email,
-			@NotBlank @Size(min = 6)   String contraseña,
-			@NotBlank @Size(min = 6)   String contraseña2,
-						   @NotBlank   String nacionalidad,
-						   			   int genero,
-						   			   int edad,
-						   			   Date fecha_nacimiento,    
-						   			   String telefono,
-						   			   int estado) {
 	
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.contraseña = contraseña;
-		this.contraseña2 = contraseña2;
-		this.nacionalidad = nacionalidad;
-		this.genero = genero;
-		this.edad = edad;
-		this.fecha_nacimiento = fecha_nacimiento;
-		this.telefono = telefono;
-		this.estado = estado;
-	}
+
+	private Set<String> role;
+	 public Set<String> getRole() {
+	      return this.role;
+	    }
+	    
+	    public void setRole(Set<String> role) {
+	      this.role = role;
+	    }	
+	
+	
 	
 
 	

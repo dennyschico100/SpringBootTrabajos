@@ -27,13 +27,13 @@ public class Roles {
 	
 	@Enumerated(EnumType.STRING )
 	@Column(length = 20)
-	private ERoles descripcion;
+	private ERoles nombre;
 	
-	public ERoles getDescripcion() {
-		return descripcion;
+	public ERoles getNombre() {
+		return nombre;
 	}
-	public void setDescripcion(ERoles descripcion) {
-		this.descripcion = descripcion;
+	public void setNombre(ERoles nombre) {
+		this.nombre = nombre;
 	}
 	public Roles() {
 		
