@@ -19,6 +19,7 @@ public class JwtUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
+
 	@Value("${api_trabajos2.app.jwtSecret}")
 	private String jwtSecret;
 
@@ -28,9 +29,13 @@ public class JwtUtils {
 	public String generateJwtToken(Authentication authentication) {
 
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-
+	
+		//userPrincipal.getEmail() 
+		//GUARDA EL CORREO CON EL QUE ME LOGIE ALB
+		//ESTABA OCN USER NAME, PERO ES OCN EMAIL , EN ETE CASO
+	
 		return Jwts.builder()
-				.setSubject((userPrincipal.getUsername()))
+				.setSubject((userPrincipal.getEmail()))
 				.setIssuedAt(new Date())
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
 				.signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -39,7 +44,10 @@ public class JwtUtils {
 
 	public String getUserNameFromJwtToken(String token) {
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+	
+		
 	}
+	
 
 	public boolean validateJwtToken(String authToken) {
 		try {

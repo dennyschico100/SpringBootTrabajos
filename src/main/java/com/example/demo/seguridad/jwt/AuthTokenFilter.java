@@ -33,12 +33,32 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		System.out.println(" soy del get user and AUTHTOKEM FILTER "); 
+		System.out.println(request.getRequestURI());
+		System.out.println(request.getHeader("Authorization"));
+		
+		
+		System.out.println("ANTES DE REVISAR EL JWT");
+		
+		//
+
+//com.example.demo.seguridad.jwt.AuthTokenFilter.parseJwt(HttpServletRequest request)
+		//
+		String jwt = parseJwt(request);
+		System.out.println(parseJwt(request));
+		
+		System.out.println("ANTES DE ENTRAR AL TRY");
 		
 		try {
-			String jwt = parseJwt(request);
+			//String username1 = jwtUtils.getUserNameFromJwtToken(jwt);
+			//System.out.println("USER NAME 1 MAN "+username1);
+				
 			if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
 				String username = jwtUtils.getUserNameFromJwtToken(jwt);
-
+				
+					System.out.print(username); 
+					System.out.print(" soy del get user and AUTHTOKEM FILTER "); 
+					
 				UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
@@ -59,8 +79,14 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 		String headerAuth = request.getHeader("Authorization");
 
 		//LIBRERERI ADEL SPOIRNG FRAMEWORK
-		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-			return headerAuth.substring(7, headerAuth.length());
+		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer")) {
+			System.out.print("************************+");
+			String aux="";
+			aux= headerAuth.substring(6, headerAuth.length());
+			System.out.print(aux);
+			
+			return aux;
+			
 		}
 
 		return null;

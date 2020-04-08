@@ -34,10 +34,10 @@ public class Oferta_Empleo {
 		this.nombre_empresa = nombre_empresa;
 	}
 	public String getArea_empresa() {
-		return area_empresa;
+		return area;
 	}
 	public void setArea_empresa(String area_empresa) {
-		this.area_empresa = area_empresa;
+		this.area = area_empresa;
 	}
 	public String getTitulo_oferta() {
 		return titulo_oferta;
@@ -138,7 +138,7 @@ public class Oferta_Empleo {
 		this.id = id;
 		this.id_empresa = id_empresa;
 		this.nombre_empresa = nombre_empresa;
-		this.area_empresa = area_empresa;
+		this.area = area_empresa;
 		this.titulo_oferta = titulo_oferta;
 		this.cargo_solicitado = cargo_solicitado;
 		this.puestos_vacantes = puestos_vacantes;
@@ -168,9 +168,10 @@ public class Oferta_Empleo {
 	@Column(name="nombre_empresa")
 	
 	String nombre_empresa;
-	@Column(name="area_empresa")
 	
-	String area_empresa;
+	
+	@Column(name="area_empresa")
+	       String area;
 	
 	@Column(name="titulo_oferta")
 	String titulo_oferta;

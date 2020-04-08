@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @CrossOrigin(origins = "*" , allowedHeaders = "*" )
 
-
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
@@ -23,12 +22,13 @@ public class TestController {
 		return "Public Content.";
 	}
 	
+	//@PreAuthorize("hasRole('ROLE_USER') or hasRole('MODERATOR') or hasRole('ADMIN')"
 	@GetMapping("/user")
-	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER')")
 	public String userAccess() {
 		return "User Content.";
 	}
-
+	
 	@GetMapping("/mod")
 	@PreAuthorize("hasRole('MODERATOR')")
 	public String moderatorAccess() {
