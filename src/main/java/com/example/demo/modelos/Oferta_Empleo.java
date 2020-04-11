@@ -15,10 +15,10 @@ public class Oferta_Empleo {
 
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getId_empresa() {
@@ -63,11 +63,11 @@ public class Oferta_Empleo {
 	public void setTipo_de_contratacion(String tipo_de_contratacion) {
 		this.tipo_de_contratacion = tipo_de_contratacion;
 	}
-	public String getNivel_emperiencia() {
-		return nivel_emperiencia;
+	public String getNivel_de_experiencia() {
+		return nivel_de_experiencia;
 	}
-	public void setNivel_emperiencia(String nivel_emperiencia) {
-		this.nivel_emperiencia = nivel_emperiencia;
+	public void setNivel_de_experiencia(String nivel_de_experiencia) {
+		this.nivel_de_experiencia = nivel_de_experiencia;
 	}
 	public int getGenero() {
 		return genero;
@@ -117,25 +117,40 @@ public class Oferta_Empleo {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+	/*
 	public Date getCreated_at() {
 		return created_at;
 	}
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
+	}*/
+	public Date getExpiracion() {
+		return expiracion;
 	}
-	public Date getExpireacion() {
-		return expireacion;
-	}
-	public void setExpireacion(Date expireacion) {
-		this.expireacion = expireacion;
+	public void setExpiracion(Date expiracion) {
+		this.expiracion = expiracion;
 	}
 	
-	public Oferta_Empleo(int id, int id_empresa, String nombre_empresa, String area_empresa, String titulo_oferta,
-			String cargo_solicitado, int puestos_vacantes, String tipo_de_contratacion, String nivel_emperiencia,
-			int genero, String edad, int salario_minimo, int salario_maximo, String vehiculo, String pais,
-			String departamento, int estado, Date created_at, Date expireacion) {
+	public Oferta_Empleo(
+			int id_empresa,
+			String nombre_empresa, 
+			String area_empresa,
+			String titulo_oferta,
+			String cargo_solicitado,
+			int puestos_vacantes, 
+			String tipo_de_contratacion,
+			String nivel_de_experiencia,
+			int genero,
+			String edad, 
+			int salario_minimo,
+			int salario_maximo, 
+			String vehiculo,
+			String pais,
+			String departamento, 
+			int estado,
+			Date expiracion) {
 		super();
-		this.id = id;
+		
 		this.id_empresa = id_empresa;
 		this.nombre_empresa = nombre_empresa;
 		this.area = area_empresa;
@@ -143,7 +158,7 @@ public class Oferta_Empleo {
 		this.cargo_solicitado = cargo_solicitado;
 		this.puestos_vacantes = puestos_vacantes;
 		this.tipo_de_contratacion = tipo_de_contratacion;
-		this.nivel_emperiencia = nivel_emperiencia;
+		this.nivel_de_experiencia = nivel_de_experiencia;
 		this.genero = genero;
 		this.edad = edad;
 		this.salario_minimo = salario_minimo;
@@ -152,26 +167,26 @@ public class Oferta_Empleo {
 		this.pais = pais;
 		this.departamento = departamento;
 		this.estado = estado;
-		this.created_at = created_at;
-		this.expireacion = expireacion;
+		//this.created_at = created_at;
+		this.expiracion = expiracion;
 	}
 	
 	public Oferta_Empleo() {}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id ;
+	@Column(name = "id",nullable=true)
+	Long id ;
 
 	@Column(name = "id_empresa")
 	int id_empresa;
 	
 	@Column(name="nombre_empresa")
-	
 	String nombre_empresa;
 	
 	
 	@Column(name="area_empresa")
-	       String area;
+	String area;
 	
 	@Column(name="titulo_oferta")
 	String titulo_oferta;
@@ -187,8 +202,8 @@ public class Oferta_Empleo {
 	String tipo_de_contratacion;
 	
 	
-	@Column(name="nivel_experienca")
-	String nivel_emperiencia;
+	@Column(name="nivel_de_experiencia")
+	String nivel_de_experiencia;
 	
 	@Column(name="genero")
 	int genero;
@@ -213,10 +228,10 @@ public class Oferta_Empleo {
 	
 	@Column(name="estado")
 	int estado;
-	@Column(name="created_at")
-	Date created_at;
+	/*@Column(name="created_at")
+	Date created_at;*/
 	
 	@Column(name="expiracion")
-	Date expireacion;
+	Date expiracion;
 		
 }
