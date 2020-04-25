@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import org.springframework.web.client.ResourceAccessException;
 import com.example.demo.modelos.Oferta_Empleo;
 import com.example.demo.repositorio.Oferta_EmpleoRepositorio;
 import com.example.demo.seguridad.ResourceNotFoundException;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 @CrossOrigin(origins = "*" ,allowedHeaders = "*" )
 @RestController
@@ -55,6 +57,21 @@ public class Oferta_EmpleoController {
 		//return productosRep.save(pro);
 		
 	}
+	@PreAuthorize("hasRole('USER')")
+	@PutMapping(value = "oferta_empleado/{id}")
+	public ResponseEntity<Oferta_Empleo> update(@PathVariable(value = "id")  Long  id, @Valid 
+			 @RequestBody Oferta_Empleo o ) throws ResourceNotFoundException {
+	
+
+	Oferta_Empleo ofer = oferta_EmpleoR.findById(id)
+			.orElseThrow(()->new ResourceAccessException(" OFERTA con id : "+id+" No eccontrada ") 
+	 );
+				
+		//ofer.setArea_empresa(o.getArea_empresa());
+		final Oferta_Empleo oferta_Empleo_updatedEmpleo =oferta_EmpleoR.save(o);
+		return ResponseEntity.ok(oferta_Empleo_updatedEmpleo);
+		
+	} 
 	
 	@GetMapping("ofertas_empleo")
 	public List<Oferta_Empleo> listarOfertas(){
@@ -65,10 +82,13 @@ public class Oferta_EmpleoController {
 	public ResponseEntity<Oferta_Empleo> obtenerOferta(@PathVariable(value="id")  long id )
 	throws ResourceNotFoundException {
 		Oferta_Empleo oferta_Empleo = oferta_EmpleoR.findById(id)
+				
 				.orElseThrow( 
-()-> new ResourceNotFoundException("OFERTA NO  Id:"+id+" NO ENCONTRADO") );
+()-> new ResourceNotFoundException("OFERTA NO  Id:"+id+" NO ENCONTRADO")
+
+						);
 		
-		return ResponseEntity.ok().body(oferta_Empleo );
+		return ResponseEntity.ok().body(oferta_Empleo);
 															
 }
 	
