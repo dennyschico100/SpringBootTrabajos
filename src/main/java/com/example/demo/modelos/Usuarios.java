@@ -67,9 +67,7 @@ public class Usuarios {
 	
 	@NotBlank
 	private String nacionalidad;
-	private int genero;
-	private int edad; 
-	private Date fecha_nacimiento;
+	
 	private String telefono;
 	private int estado;
 	@Nullable
@@ -117,24 +115,7 @@ public class Usuarios {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	public int getGenero() {
-		return genero;
-	}
-	public void setGenero(int genero) {
-		this.genero = genero;
-	}
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-	public Date getFecha_nacimiento() {
-		return fecha_nacimiento;
-	}
-	public void setFecha_nacimiento(Date fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
-	}
+	
 	public String getTelefono() {
 		return telefono;
 	}
@@ -163,9 +144,7 @@ public class Usuarios {
 			@NotBlank @Size(min = 6)   String contraseña,
 			@NotBlank @Size(min = 6)   String contraseña2,
 						   @NotBlank   String nacionalidad,
-						   			   int genero,
-						   			   int edad,
-						   			   Date fecha_nacimiento,    
+						   			    
 						   			   String telefono,
 						   			   int estado) {
 	
@@ -175,9 +154,6 @@ public class Usuarios {
 		this.contraseña = contraseña;
 		this.contraseña2 = contraseña2;
 		this.nacionalidad = nacionalidad;
-		this.genero = genero;
-		this.edad = edad;
-		this.fecha_nacimiento = fecha_nacimiento;
 		this.telefono = telefono;
 		this.estado = estado;
 	}

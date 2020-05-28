@@ -57,6 +57,7 @@ public class Oferta_EmpleoController {
 		//return productosRep.save(pro);
 		
 	}
+	
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping(value = "oferta_empleado/{id}")
 	public ResponseEntity<Oferta_Empleo> update(@PathVariable(value = "id")  Long  id, @Valid 

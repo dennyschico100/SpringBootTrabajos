@@ -96,9 +96,6 @@ public class AuthController {
 				 encoder.encode(signUpRequest.getContraseña()),
 				encoder.encode(signUpRequest.getContraseña2()),		
 				signUpRequest.getNacionalidad(),
-				signUpRequest.getGenero(),
-				signUpRequest.getEdad(),
-				signUpRequest.getFecha_nacimiento(),
 				signUpRequest.getTelefono(),
 				signUpRequest.getEstado()
 				
@@ -118,13 +115,13 @@ public class AuthController {
 					Roles adminRole = roleRepository.findByNombre(ERoles.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
-
+						
 					break;
 				case "mod":
 					Roles modRole = roleRepository.findByNombre(ERoles.ROLE_MODERATOR)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(modRole);
-
+						
 					break;
 				default:
 					Roles userRole = roleRepository.findByNombre(ERoles.ROLE_USER)
