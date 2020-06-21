@@ -1,4 +1,4 @@
-package com.example.demo.modelos;
+﻿package com.example.demo.modelos;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,6 +34,7 @@ public class Usuarios {
 	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;
 	}
+	int commit_=0;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
