@@ -135,6 +135,7 @@ public class Oferta_Empleo {
 			int id_empresa,
 			String nombre_empresa, 
 			String area_empresa,
+			String logo,
 			String titulo_oferta,
 			String cargo_solicitado,
 			int puestos_vacantes, 
@@ -154,6 +155,7 @@ public class Oferta_Empleo {
 		this.id_empresa = id_empresa;
 		this.nombre_empresa = nombre_empresa;
 		this.area = area_empresa;
+		this.logo=logo;
 		this.titulo_oferta = titulo_oferta;
 		this.cargo_solicitado = cargo_solicitado;
 		this.puestos_vacantes = puestos_vacantes;
@@ -188,8 +190,20 @@ public class Oferta_Empleo {
 	@Column(name="area_empresa")
 	String area;
 	
+	@Column(name="logo")
+	String logo;
+	
+	
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
 	@Column(name="titulo_oferta")
 	String titulo_oferta;
+	
 	
 	@Column(name="cargo_solicitado")
 	String cargo_solicitado;

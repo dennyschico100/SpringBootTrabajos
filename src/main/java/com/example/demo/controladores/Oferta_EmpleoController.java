@@ -43,7 +43,7 @@ public class Oferta_EmpleoController {
 	}
 	
 	@PreAuthorize("hasRole('USER')")
-	@PostMapping("oferta_empleo")
+	@PostMapping("oferta_empleo/")
 	public ResponseEntity<Oferta_Empleo> addOferta(
 			@Valid @RequestBody Oferta_Empleo oferta  ) {
 		try {
@@ -66,7 +66,7 @@ public class Oferta_EmpleoController {
 
 	Oferta_Empleo ofer = oferta_EmpleoR.findById(id)
 			.orElseThrow(()->new ResourceAccessException(" OFERTA con id : "+id+" No eccontrada ") 
-	 );
+	 );	
 				
 		//ofer.setArea_empresa(o.getArea_empresa());
 		final Oferta_Empleo oferta_Empleo_updatedEmpleo =oferta_EmpleoR.save(o);
@@ -74,7 +74,7 @@ public class Oferta_EmpleoController {
 		
 	} 
 	
-	@GetMapping("ofertas_empleo")
+	@GetMapping("oferta_empleo/")
 	public List<Oferta_Empleo> listarOfertas(){
 		return oferta_EmpleoR.findAll();
 	}
