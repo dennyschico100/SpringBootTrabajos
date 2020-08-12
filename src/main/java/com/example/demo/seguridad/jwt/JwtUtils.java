@@ -22,16 +22,16 @@ public class JwtUtils {
 
 	@Value("${api_trabajos2.app.jwtSecret}")
 	private String jwtSecret;
-
+	
 	@Value("${api_trabajos2.app.jwtExpirationMs}")
 	private int jwtExpirationMs;
 
 	public String generateJwtToken(Authentication authentication) {
 
-		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-	
+		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal() ;
+		
 		//userPrincipal.getEmail() 
-		//GUARDA EL CORREO CON EL QUE ME LOGIE ALB
+		//GUARDA EL CORREO CON EL QUE ME LOGIE ALV
 		//ESTABA OCN USER NAME, PERO ES OCN EMAIL , EN ETE CASO
 	
 		return Jwts.builder()

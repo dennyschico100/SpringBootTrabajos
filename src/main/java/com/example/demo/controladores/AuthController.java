@@ -82,7 +82,7 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Este Correo electronico ya esta registrado !"));
 		}
-
+		
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()

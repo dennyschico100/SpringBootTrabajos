@@ -16,10 +16,11 @@ import com.example.demo.repositorio.UsuarioRepositorio;
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	UsuarioRepositorio userRepository;
-
+	
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		System.out.print("SI ENTRA LA METOOD");
 		Usuarios user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + email));
 

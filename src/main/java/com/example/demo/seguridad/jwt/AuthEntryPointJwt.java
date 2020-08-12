@@ -25,7 +25,7 @@ public class AuthEntryPointJwt  implements AuthenticationEntryPoint {
 		
 		//LUEGO
 		logger.error("Unauthorized error: {}",authException.getMessage());
-		response.sendError(HttpServletResponse.SC_ACCEPTED,"Error: Unauthorized" );
+		response.sendError(HttpServletResponse.SC_ACCEPTED,"Error: No autorizado "  );
 		//HttpServletResponse.SC_UNAUTHORIZED is the 401 Status
 		//code. It indicates that the request requires HTTP authentication.
 		

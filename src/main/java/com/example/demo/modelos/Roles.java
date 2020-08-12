@@ -15,15 +15,16 @@ import com.example.demo.modelos.ERoles;;
 public class Roles {
 
 	
-	@Id 
-	@GeneratedValue(strategy =GenerationType.IDENTITY )
-	private int id_rol;
+	
 	public int getId_rol() {
 		return id_rol;
 	}
 	public void setId_rol(int id_rol) {
 		this.id_rol = id_rol;
 	}
+	@Id 
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	private int id_rol;
 	
 	@Enumerated(EnumType.STRING )
 	@Column(length = 20)
